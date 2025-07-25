@@ -4,8 +4,21 @@ const User = require('../models/user.js');
 
 // ----------- router logic ----------//
 
-router.get('/', (req, res) => {
-  res.render('foods/index.ejs');
+router.get('/', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        res.render('foods/index.ejs', {
+            foods: currentUser.foods,
+        });
+    } catch (error) {
+        console.log(error); 
+        res.redirect('/');
+    }
 });
 
-moddule.exports = router;
+
+router.get('/new', async (req, res) => {
+    res.render('foods/new.ejs');
+});
+
+module.exports = router;

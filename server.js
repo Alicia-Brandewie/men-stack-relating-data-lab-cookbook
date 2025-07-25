@@ -43,7 +43,7 @@ app.use(
 app.use(passUserToView);
 app.use("/auth", authController);
 app.use(isSignedIn);
-app.use('/users/:usersId/foods', foodsController);
+app.use('/users/:usersId/foods', foodController); //VScode suggested change from "foodsController" to "foodController" and that worked so *shrug*
 
 
 
