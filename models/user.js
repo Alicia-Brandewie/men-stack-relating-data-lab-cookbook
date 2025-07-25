@@ -1,7 +1,16 @@
-//this is the simplest version of this model -- there can be much more
-//like DOB, address, phone number, etc
+
 
 const mongoose = require("mongoose");
+
+const foodSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+});
+
+
+
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -12,6 +21,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  pantry: [foodSchema],
 });
 
 const User = mongoose.model("User", userSchema);
