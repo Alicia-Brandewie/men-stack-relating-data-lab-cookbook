@@ -23,7 +23,7 @@ mongoose.connection.on("connected", () => {
 });
 
 
-/* ---------- Dependencies ----------*/
+/* ---------- Middleware ----------*/
 
 
 app.use(express.urlencoded({extended: false}));

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <%= banana.name %> Recipe</title>
+</head>
+
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1><%= banana.name %></h1>
+
+    <% if (banana.source) { %>
+    <p>Source: <%= banana.source %></p>
+    <% } %>
+    
+    <% if (banana.prepTime) { %>
+    <p>Prep time: <%= banana.prepTime %></p>
+    <% } %>
+
+    <% if (banana.cookTime) { %>
+    <p>Cook time: <%= banana.cookTime %></p>
+    <% } %>
+
+    <p>Ingredients: <%= banana.ingredients %></p>
+
+    <% if (banana.notes) { %>
+    <p>Notes: <%= banana.notes %></p>
+    <% } %>
+    
+</body>
+
+</html>

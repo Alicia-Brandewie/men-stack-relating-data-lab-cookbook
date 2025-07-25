@@ -7,6 +7,22 @@ const foodSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  source: {
+    type: String,
+  },
+  prepTime: {
+    type: Number,
+  },
+  cookTime: {
+    type: Number,
+  },
+  ingredients: {
+    type: Array,
+    required: true,
+  },
+  notes: {
+    type: String
+  },
 });
 
 
