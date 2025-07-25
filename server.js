@@ -52,10 +52,18 @@ app.use('/users/:usersId/foods', foodController); //VScode suggested change from
 
 //  GET / landing page
 app.get("/", async (req,res) => {
-    res.render("index.ejs", { user: req.session.user, })   
+  if (req.session.user) {
+    res.redirect(`/users/${req.session.user._id}/foods`); 
+  } else {
+    res.render("index.ejs");
+  }
 });
+//NOT SHOWING UP UNLESS LOGGED IN
 
 
+app.get("/new", async (req,res) => {
+    res.render("new.ejs", { user: req.session.user, })   
+});
 
 
 
