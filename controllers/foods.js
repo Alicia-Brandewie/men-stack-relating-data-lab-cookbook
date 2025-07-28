@@ -61,7 +61,7 @@ router.get('/:foodId', async (req, res) => {
     const currentUser = await User.findById(req.session.user._id);
     const recipe = currentUser.pantry.id(req.params.foodId);
     res.render('foods/recipe.ejs', {
-      banana: recipe,
+      addedRecipe: recipe,
     });
     } catch (error) {
     console.log(error);
@@ -75,6 +75,36 @@ router.get('/:foodId', async (req, res) => {
 
 
 // ---------------------- DELETE ---------------------//
+//DELETE_delete added Recipe
+// router.delete('/:foodId', async (req,res) => {
+//     console.log("deleteHit")
+//     try { 
+//     const currentUser = await User.findById(req.session.user._id);
+//     console.log(currentUser)
+//     currentUser.pantry.id(req.params.pantryId).deleteOne();
+//     await currentUser.save();
+//     res.redirect(`/users/${currentUser._id}/foods`);
+//     } catch (error) {
+//         console.log(error);
+//         res.redirect('/');
+//     }
+// });
 
 
+router.delete('/:pantryId', async (req, res) => {
+  console.log("deleteHit");
+  try {
+    const currentUser = await User.findById(req.session.user._id);
+    console.log(currentUser);
+
+    // Filter out the item with the matching ID
+    currentUser.pantry = currentUser.pantry.filter(item => item._id.toString() !== req.params.pantryId);
+
+    await currentUser.save();
+    res.redirect(`/users/${currentUser._id}/foods`);
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+});
 module.exports = router;

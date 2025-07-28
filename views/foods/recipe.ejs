@@ -4,31 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> <%= banana.name %> Recipe</title>
+    <title> <%= addedRecipe.name %> Recipe</title>
 </head>
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1><%= banana.name %></h1>
+    <h1><%= addedRecipe.name %></h1>
 
-    <% if (banana.source) { %>
-    <p>Source: <%= banana.source %></p>
+    <% if (addedRecipe.source) { %>
+    <p>Source: <%= addedRecipe.source %></p>
     <% } %>
     
-    <% if (banana.prepTime) { %>
-    <p>Prep time: <%= banana.prepTime %></p>
+    <% if (addedRecipe.prepTime) { %>
+    <p>Prep time: <%= addedRecipe.prepTime %></p>
     <% } %>
 
-    <% if (banana.cookTime) { %>
-    <p>Cook time: <%= banana.cookTime %></p>
+    <% if (addedRecipe.cookTime) { %>
+    <p>Cook time: <%= addedRecipe.cookTime %></p>
     <% } %>
 
-    <p>Ingredients: <%= banana.ingredients %></p>
+    <p>Ingredients: <%= addedRecipe.ingredients %></p>
 
-    <% if (banana.notes) { %>
-    <p>Notes: <%= banana.notes %></p>
+    <% if (addedRecipe.notes) { %>
+    <p>Notes: <%= addedRecipe.notes %></p>
     <% } %>
     
+
+
+    <form
+      action="/users/<%= user._id %>/foods/<%= addedRecipe._id %>?_method=DELETE"
+      method="POST"
+    >
+      <button type="submit">Delete this Recipe</button>
+    </form>
 </body>
 
 </html>
