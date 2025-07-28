@@ -11,18 +11,15 @@
     <%- include('../partials/_navbar.ejs') %>
         <h1>Explore Our Community</h1>
         
-<!-- 
-<ul>
-      <#% pantry.forEach(food =>{ %>
-      <li>
-         <a href="/users/<#%= user._id %>/foods/<#%= food._id %>">
-        <#%= food.name %>
-        </a>
-    </li>
-      <#% }) %>
-</ul>
 
-    <a href="/users/<#%=user._id%>/foods/new">Add a new recipe</a> -->
+<ul>
+      <% users.forEach(user =>{ %>
+      <li>
+         <a href="/users/<%= user._id %>"> <%= user.username%></a>
+    </li>
+      <% }) %>
+</ul> 
+
 
 </body>
 

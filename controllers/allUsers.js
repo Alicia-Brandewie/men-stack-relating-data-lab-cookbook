@@ -6,7 +6,10 @@ const User = require('../models/user.js');
 router.get("/index", async (req, res) =>{
     const currentUser = await User.findById(req.session.user._id);
     console.log('clicked community page');
-    res.render("allUsers/index.ejs");
+    const allUsers = await User.find({});
+    res.render("allUsers/index.ejs", {
+        users: allUsers
+    });
 });
 
 // router.post('/index', async (req,res) =>{
