@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New recipe</title>
 </head>
+
 <body>
     <%- include('../partials/_navbar.ejs') %>
 
-    <h1>Add a new recipe to your CookBook </h1>
+        <h1>Add a new recipe to your CookBook </h1>
 
-    <form action="/users/<%= user._id %>/foods" method="POST">
+        <form action="/users/<%= user._id %>/foods" method="POST">
 
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" />
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" />
 
-        <label for="source">Source: </label>
-        <input type="text" name="source" id="source" />
+            <label for="source">Source: </label>
+            <input type="text" name="source" id="source" />
 
-        <label for="prepTime">Prep Time (in minutes):</label>
-        <input type="number" name="prepTime" id="prepTime" />
+            <label for="prepTime">Prep Time (in minutes):</label>
+            <input type="number" name="prepTime" id="prepTime" />
 
-        <label for="cookTime">Cook Time (in minutes): </label>
-        <input type="number" name="cookTime" id="cookTime" />
+            <label for="cookTime">Cook Time (in minutes): </label>
+            <input type="number" name="cookTime" id="cookTime" />
 
-        <label for="ingredients">Ingredients: </label>
-        <input type="text" name="ingredients" id="ingredients"/>
+            <label for="ingredients">Ingredients: </label>
+            <input type="text" name="ingredients" id="ingredients" />
 
-        <label for="notes">Notes: </label>
-        <input type="text" name="notes" id="notes" />
+            <label for="notes">Notes: </label>
+            <input type="text" name="notes" id="notes" />
 
-        <button type="submit">Add recipe</button>
-    </form>
+            <button type="submit">Add recipe</button>
+        </form>
 </body>
+
 </html>

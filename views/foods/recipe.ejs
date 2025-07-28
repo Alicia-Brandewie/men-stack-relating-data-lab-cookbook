@@ -31,16 +31,17 @@
     <% } %>
     
     <a href="/users/<%= user._id %>/foods/<%= addedRecipe._id %>/edit">
-     <h3>Edit this recipe</h3> 
+    <h3>Edit this recipe</h3> 
     </a>
 
 
     <form
-      action="/users/<%= user._id %>/foods/<%= addedRecipe._id %>?_method=DELETE"
-      method="POST"
+    action="/users/<%= user._id %>/foods/<%= addedRecipe._id %>?_method=DELETE"
+    method="POST"
     >
-      <button type="submit">Delete this recipe</button>
+    <button type="submit">Delete this recipe</button>
     </form>
+    
 </body>
 
 </html>
