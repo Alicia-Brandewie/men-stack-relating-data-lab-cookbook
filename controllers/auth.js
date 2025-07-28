@@ -44,15 +44,15 @@ router.post("/sign-in", async (req,res)=>{
         username: userInDatabase.username,
         _id: userInDatabase._id
     };
-
-    router.get("/sign-out", (req,res)=>{
+     router.get("/sign-out", (req,res)=>{
         req.session.destroy();
         res.redirect("/");
     });
     
-    res.redirect("/");        
-})
 
+   
+    res.redirect("/");        
+});
 
 
 
