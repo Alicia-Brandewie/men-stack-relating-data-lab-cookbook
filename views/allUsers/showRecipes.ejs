@@ -4,23 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Explore <%= selectedUser.username%>'s Pantry</title>
 </head>
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
+    <div class="all-foods-body">
+    <div class="all-foods-header">
         <h1>Explore <%= selectedUser.username%>'s Pantry</h1>
-
+    </div>
         <ul>
             <% selectedUser.pantry.forEach(food=>{ %>
                 <li>
-                    <a href="/users/<%= user._id %>/foods/<%= food._id %>">
+                    <p>
                         <%= food.name %>
-                    </a>
+                    </p>
                 </li>
                 <% }) %>
         </ul>
-
+        </div>
 </body>
 
 </html>

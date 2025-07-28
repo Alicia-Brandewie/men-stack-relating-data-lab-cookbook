@@ -4,44 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/recipe.css" />
     <title> <%= addedRecipe.name %> Recipe</title>
 </head>
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1><%= addedRecipe.name %></h1>
+    <div class="recipe-body">
+        <div class="recipe-header">     
+        <h1><%= addedRecipe.name %></h1>
+        <a href="/users/<%= user._id %>/foods/<%= addedRecipe._id %>/edit">
+        <h3>Edit this recipe</h3> 
+        </a>
 
+        <form
+        action="/users/<%= user._id %>/foods/<%= addedRecipe._id %>?_method=DELETE"
+        method="POST"
+        >
+        <button type="submit">Delete this recipe</button>
+        </form>
+        </div>
 
-    <% if (addedRecipe.source) { %>
-    <p>Source: <%= addedRecipe.source %></p>
-    <% } %>
+    <div class="recipe-container">
+        <div class="recipe-container-header">
+        <% if (addedRecipe.prepTime) { %>
+        <p>Prep time: <%= addedRecipe.prepTime %></p>
+        <% } %>
+
+        <% if (addedRecipe.cookTime) { %>
+        <p>Cook time: <%= addedRecipe.cookTime %></p>
+        <% } %>
+
+        <% if (addedRecipe.source) { %>
+        <p>Source: <%= addedRecipe.source %></p>
+        <% } %>
+        </div>
     
-    <% if (addedRecipe.prepTime) { %>
-    <p>Prep time: <%= addedRecipe.prepTime %></p>
-    <% } %>
-
-    <% if (addedRecipe.cookTime) { %>
-    <p>Cook time: <%= addedRecipe.cookTime %></p>
-    <% } %>
-
-    <p>Ingredients: <%= addedRecipe.ingredients %></p>
-
+    <p>Ingredients:<p>
+    <p><%= addedRecipe.ingredients %></p>
     <% if (addedRecipe.notes) { %>
-    <p>Notes: <%= addedRecipe.notes %></p>
+    <p>Notes:</p>
+    <p> <%= addedRecipe.notes %></p>
     <% } %>
     
-    <a href="/users/<%= user._id %>/foods/<%= addedRecipe._id %>/edit">
-    <h3>Edit this recipe</h3> 
-    </a>
+    </div>
+</div>
 
-
-    <form
-    action="/users/<%= user._id %>/foods/<%= addedRecipe._id %>?_method=DELETE"
-    method="POST"
-    >
-    <button type="submit">Delete this recipe</button>
-    </form>
-    
 </body>
 
 </html>

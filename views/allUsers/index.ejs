@@ -4,13 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Community</title>
 </head>
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
+    <div class="all-foods-body">
+    <div class="all-foods-header">
         <h1>Explore Our Community</h1>
-
+    </div>
         <ul>
             <% users.forEach(user=>{ %>
                 <li>
@@ -20,7 +23,7 @@
                 </li>
                 <% }) %>
         </ul>
-
+        </div>
 </body>
 
 </html>

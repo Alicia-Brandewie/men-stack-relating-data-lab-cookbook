@@ -15,6 +15,8 @@ const allUsersController = require('./controllers/allUsers.js');
 
 const port = process.env.PORT ? process.env.PORT : "3000";
 
+const path = require('path');
+
 /* ---------- DB connections ----------*/
 
 mongoose.connect(process.env.MONGODB_URI);
@@ -26,13 +28,14 @@ mongoose.connection.on("connected", () => {
 
 /* ---------- Middleware ----------*/
 
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({ extended: false }));
-app.use(methodOverride("_method"));
-app.use(morgan('dev'));
 
 app.use(methodOverride("_method"));
+
 app.use(morgan('dev'));
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -42,11 +45,14 @@ app.use(
 );
 
 app.use(passUserToView);
-app.use("/auth", authController);
-app.use(isSignedIn);
-app.use('/users/:usersId/foods', foodController);
-app.use('/allUsers', allUsersController);
 
+app.use("/auth", authController);
+
+app.use(isSignedIn);
+
+app.use('/users/:usersId/foods', foodController);
+
+app.use('/allUsers', allUsersController);
 
 /* ---------- Routes ----------*/
 

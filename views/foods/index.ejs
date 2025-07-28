@@ -4,13 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>My Pantry</title>
 </head>
 
 <body>
     <%- include('../partials/_navbar.ejs') %>
+    
+<div class="all-foods-body">
+    <div class="all-foods-header">
         <h1>Welcome to your Pantry</h1>
-
+        <a class="add-food-link" href="/users/<%=user._id%>/foods/new">Add a new recipe</a>
+    </div>
         <ul>
             <% pantry.forEach(food=>{ %>
                 <li>
@@ -20,8 +25,7 @@
                 </li>
                 <% }) %>
         </ul>
-
-        <a href="/users/<%=user._id%>/foods/new">Add a new recipe</a>
+</div>
 
 </body>
 

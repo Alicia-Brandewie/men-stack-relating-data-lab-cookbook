@@ -6,13 +6,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/stylesheets/style.css" />
   <title>Home Page</title>
 </head>
 
-<body>
+<body class="index-body">
   <%- include('./partials/_navbar.ejs') %>
-    <h1>Welcome to CookBook</h1>
-
+    <div class="index-container">
+      <div class="text-container">
+        <h1 class="main-header">Welcome to CookBook</h1>
+        <p class="subheader"> Collect your favorite recipes and share with the community.</p>
+      </div>
+      <div class="auth-links">
+        <a class="signup-link" href="/auth/sign-up">Sign Up</a>
+        <a class="signin-link" href="/auth/sign-in">Sign In</a>
+      </div>
+    </div>
+</body>
 
 </body>
 
