@@ -11,6 +11,7 @@
     <%- include('../partials/_navbar.ejs') %>
     <h1><%= addedRecipe.name %></h1>
 
+
     <% if (addedRecipe.source) { %>
     <p>Source: <%= addedRecipe.source %></p>
     <% } %>
@@ -29,13 +30,16 @@
     <p>Notes: <%= addedRecipe.notes %></p>
     <% } %>
     
+    <a href="/users/<%= user._id %>/foods/<%= addedRecipe._id %>/edit">
+     <h3>Edit this recipe</h3> 
+    </a>
 
 
     <form
       action="/users/<%= user._id %>/foods/<%= addedRecipe._id %>?_method=DELETE"
       method="POST"
     >
-      <button type="submit">Delete this Recipe</button>
+      <button type="submit">Delete this recipe</button>
     </form>
 </body>
 

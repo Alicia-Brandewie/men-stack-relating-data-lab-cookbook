@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editing <%= addedRecipe.name %> </title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+
+    <h1>Editing <%= addedRecipe.name %> </h1>
+
+    <form action="/users/<%= user._id %>/foods/<%= addedRecipe._id %>?_method=PUT" 
+        method="POST">
+
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" value="<%= addedRecipe.name %>"/>
+
+        <label for="source">Source: </label>
+        <input type="text" name="source" id="source" value="<%= addedRecipe.source %>"/>
+
+        <label for="prepTime">Prep Time (in minutes):</label>
+        <input type="number" name="prepTime" id="prepTime" value="<%= addedRecipe.prepTime %>"/>
+
+        <label for="cookTime">Cook Time (in minutes): </label>
+        <input type="number" name="cookTime" id="cookTime" value="<%= addedRecipe.cookTime %>"/>
+
+        <label for="ingredients">Ingredients: </label>
+        <input type="text" name="ingredients" id="ingredients" value="<%= addedRecipe.ingredients%>"/>
+
+        <label for="notes">Notes: </label>
+        <input type="text" name="notes" id="notes" value="<%= addedRecipe.notes %>"/>
+
+        <button type="submit">Update recipe</button>
+    </form>
+</body>
+</html>

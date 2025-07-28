@@ -72,10 +72,41 @@ router.get('/:foodId', async (req, res) => {
 
 
 // ---------------------- UPDATE ---------------------//
+//GET_ added recipe to update it
+router.get('/:pantryId/edit', async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.session.user._id);
+    const pantry = currentUser.pantry.id(req.params.pantryId);
+    res.render('foods/edit.ejs', {
+      addedRecipe: pantry,
+   });              
+    console.log("hit edit button");
 
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+});
+
+
+//PUT_edited recipe into DB
+router.put('/:pantryID', async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.session.user._id);
+    const pantry = currentUser.pantry.id(req.params.pantryID);
+    pantry.set(req.body);
+    await currentUser.save();
+    res.redirect(
+      `/users/${currentUser._id}/foods/${req.params.pantryID}`
+    );
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+});
 
 // ---------------------- DELETE ---------------------//
-//DELETE_delete added Recipe
+//first attempt
 // router.delete('/:foodId', async (req,res) => {
 //     console.log("deleteHit")
 //     try { 
@@ -90,12 +121,13 @@ router.get('/:foodId', async (req, res) => {
 //     }
 // });
 
-
+//DELETE_delete added Recipe
+//help from Glen (also applicable to other CRUD areas), "mongo being mongo"
 router.delete('/:pantryId', async (req, res) => {
-  console.log("deleteHit");
+  // console.log("deleteHit");
   try {
     const currentUser = await User.findById(req.session.user._id);
-    console.log(currentUser);
+   // console.log(currentUser);
 
     // Filter out the item with the matching ID
     currentUser.pantry = currentUser.pantry.filter(item => item._id.toString() !== req.params.pantryId);
@@ -108,3 +140,8 @@ router.delete('/:pantryId', async (req, res) => {
   }
 });
 module.exports = router;
+
+
+
+
+
