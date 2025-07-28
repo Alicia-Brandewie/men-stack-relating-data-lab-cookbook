@@ -11,6 +11,7 @@ const passUserToView = require('./middleware/pass-user-to-view.js');
 const authController = require('./controllers/auth.js');
 const isSignedIn = require('./middleware/is-signed-in.js');
 const foodController = require ('./controllers/foods.js');
+const allUsersController = require ('./controllers/allUsers.js');
 
 const port = process.env.PORT ? process.env.PORT : "3000";
 
@@ -44,7 +45,7 @@ app.use(passUserToView);
 app.use("/auth", authController);
 app.use(isSignedIn);
 app.use('/users/:usersId/foods', foodController); //VScode suggested change from "foodsController" to "foodController" and that worked so *shrug*
-
+app.use('/allUsers', allUsersController);
 
 
 /* ---------- Routes ----------*/
@@ -64,9 +65,6 @@ app.get("/", async (req,res) => {
 app.get("/new", async (req,res) => {
     res.render("new.ejs", { user: req.session.user, })   
 });
-
-
-
 
 
 
