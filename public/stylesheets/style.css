@@ -16,11 +16,10 @@ h1 {
     font-family: 'Playwrite HU',
 }
 
-/* -------------------- [NOT CURRENTLY WORKING ] Index --------------------*/
-
+/* -------------------- Index --------------------*/
 .main-header {
   font-weight: bold;
-  color: white;
+  color: #f6e7e7;
   font-size: 5em;
   margin: 20px;
 }
@@ -76,7 +75,6 @@ h1 {
 .signin-link:hover {
   background-color: #ffffff;
 }
-
 
 /* -------------------- Sign-in/Sign-up --------------------*/
 .signin-container,
@@ -153,29 +151,3 @@ button {
 
 .add-food-link:hover {
   background-color: #e84a6c;
-
-  ul {
-  list-style: none;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-ul > a {
-  text-decoration: none;
-  color: #1c2e5b;
-  width: 50%;
-  background-color: #f6e7e7;
-  border-radius: 30px;
-  padding: 10px 20px;
-  margin: 15px 0;
-  font-weight: bold;
-  text-align: center;
-}
-
-ul > a:hover {
-  background-color: #4b598e;
-  color: white;
-}

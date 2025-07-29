@@ -26,7 +26,6 @@ router.get("/sign-in", (req, res) => {
 });
 
 router.post("/sign-in", async (req, res) => {
-    //first check
     const userInDatabase = await User.findOne({ username: req.body.username });
     if (!userInDatabase) {
         return res.send("Login failed. Please try again.");
@@ -39,13 +38,13 @@ router.post("/sign-in", async (req, res) => {
         username: userInDatabase.username,
         _id: userInDatabase._id
     };
-    router.get("/sign-out", (req, res) => {
-        req.session.destroy();
-        res.redirect("/");
-    });
+    
     res.redirect("/");
 });
 
-
+router.get("/sign-out", (req, res) => {
+        req.session.destroy();
+        res.redirect("/");
+    });
 
 module.exports = router;

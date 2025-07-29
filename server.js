@@ -45,36 +45,13 @@ app.use(
 );
 
 app.use(passUserToView);
-
 app.use("/auth", authController);
-
-//app.use(isSignedIn); //was being used globablly 
-  //below allows more granular control 
 app.use('/users/:usersId/foods', isSignedIn, foodController);
 app.use('/allUsers', isSignedIn, allUsersController);
-//app.use('/users/:usersId/foods', foodController);
-  //extra now
-//app.use('/allUsers', allUsersController);
-  //extra now
 
 /* ---------- Routes ----------*/
 
  //GET_landing page
-
-//  takes to landing page IF signed in; no landing page if signed out (sign out DOES work though)
-//   app.get("/", async (req, res) => {
-//   res.render("/index.ejs");
-// });
-
-//  app.get("/", async (req, res) => {
-//  if (!req.session.user) { 
-//    res.render("index.ejs")
-//    } else {
-//     res.redirect(`/users/${req.session.user._id}/foods`);
-//  }
-// });
-
-// NO landing page if not signed in (directly to sign-in) & NO signout page
 app.get("/", async (req, res) => {
   if (req.session.user) {
     res.redirect(`/users/${req.session.user._id}/foods`);
